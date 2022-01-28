@@ -13,7 +13,6 @@ float _angle = -PI/2;
 float _radius;  float _strokeCol = 54;
 int _strokeChange = -1;
 
-int backgroundColor = 180;
 int strokeW = 1;
 int factor = height/16;
 int padding = 20;
@@ -28,7 +27,7 @@ void setup() {
   size(700, 500);
   smooth();
   frameRate(30);
-  background(180);
+  background(random(0,255), random(0,255), random(0,255));
   noFill();
   _angnoise = random(10);
   _radiusnoise = random(10);
