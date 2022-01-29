@@ -26,7 +26,7 @@ int count = 0;
 void setup() {
   ColorPalette randomC = new ColorPalette();
   int seedVal = int(random(0,200));
-   println(seedVal);
+   //println(seedVal);
    randomSeed(seedVal);
   size(700, 500);
   smooth();
@@ -41,6 +41,7 @@ void setup() {
 
   void draw() {
    ColorPalette randomC = new ColorPalette();
+  _strokeCol = randomC.getBaseColor();
   _radiusnoise += 0.005;
   _radius = (noise(_radiusnoise) * 550) +1;
   _angnoise += 0.005;
@@ -61,12 +62,8 @@ void setup() {
   if (_strokeCol > 254) { _strokeChange = -1; }
   if (_strokeCol < 0) { _strokeChange = 1; }
   stroke(_strokeCol, 60);
-  stroke(randomC.getComplement());
   strokeWeight(1);
   line(x1, y1, x2, y2);
-  // removed: caused the screen ot jitter
-  //fill(randomC.transparent(randomC.getBaseColor(), 20));
-  //rect(0, 0, width, height);
 }
 
 color blendColors(color col, color bg) {
