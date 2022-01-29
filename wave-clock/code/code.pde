@@ -24,17 +24,20 @@ int count = 0;
 
 
 void setup() {
+  ColorPalette randomC = new ColorPalette();
+  int seedVal = int(random(0,200));
+   println(seedVal);
+   randomSeed(seedVal);
   size(700, 500);
   smooth();
   frameRate(30);
-  background(random(0,255), random(0,255), random(0,255));
+  background(randomC.getBaseColor());
   noFill();
   _angnoise = random(10);
   _radiusnoise = random(10);
   _xnoise = random(10);
   _ynoise = random(10);
 }
-
 
   void draw() {
    ColorPalette randomC = new ColorPalette();
@@ -61,6 +64,7 @@ void setup() {
   stroke(random(0,255), random(0,255), random(0,255));
   strokeWeight(1);
   line(x1, y1, x2, y2);
+  fill(randomC.transparent(randomC.getBaseColor(), 20));
 }
 
 color blendColors(color col, color bg) {
