@@ -61,10 +61,12 @@ void setup() {
   if (_strokeCol > 254) { _strokeChange = -1; }
   if (_strokeCol < 0) { _strokeChange = 1; }
   stroke(_strokeCol, 60);
-  stroke(random(0,255), random(0,255), random(0,255));
+  stroke(randomC.getComplement());
   strokeWeight(1);
   line(x1, y1, x2, y2);
-  fill(randomC.transparent(randomC.getBaseColor(), 20));
+  // removed: caused the screen ot jitter
+  //fill(randomC.transparent(randomC.getBaseColor(), 20));
+  //rect(0, 0, width, height);
 }
 
 color blendColors(color col, color bg) {
