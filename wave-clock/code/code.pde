@@ -2,15 +2,10 @@ import processing.pdf.*;
 
 HelperFunctions hf = new HelperFunctions();
 
-//Lesson 1.1
-//Code taken from Daniel Shiffman's video below and modified with comments
-// https://www.voutube.com/watch?v=o8dffr286os&list=PL6Uak5uKONDGXWAL99560YA D78 fM&index=9
-
-
 float _angnoise, _radiusnoise;
 float _xnoise, _ynoise;
 float _angle = -PI/2;
-float _radius;  float _strokeCol = 54;
+float _radius;  color _strokeCol;
 int _strokeChange = -1;
 
 int strokeW = 1;
@@ -25,13 +20,15 @@ int count = 0;
 
 void setup() {
   ColorPalette randomC = new ColorPalette();
+  _strokeCol = randomC.getBaseColor();
   int seedVal = int(random(0,200));
+  background(randomC.getComplement());
+  
    //println(seedVal);
    randomSeed(seedVal);
   size(700, 500);
   smooth();
   frameRate(30);
-  background(randomC.getBaseColor());
   noFill();
   _angnoise = random(10);
   _radiusnoise = random(10);
@@ -40,8 +37,6 @@ void setup() {
 }
 
   void draw() {
-   ColorPalette randomC = new ColorPalette();
-  _strokeCol = randomC.getBaseColor();
   _radiusnoise += 0.005;
   _radius = (noise(_radiusnoise) * 550) +1;
   _angnoise += 0.005;
